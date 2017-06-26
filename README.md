@@ -1,7 +1,20 @@
 # C80Push
 
 Добавляет функционал дилеров и офисов продаж. 
-Это ActiveAdmin plugin.
+Это *ActiveAdmin* plugin.
+Использует *Bootstrap* и *Bootstrap Select*. 
+
+Содержит модели: 
+
+* Дилер
+* Офис
+* Регион
+
+Добавляет пункт меню:
+
+* Дилеры
+    * Список дилеров
+    * Регионы
 
 ## Usage
 
@@ -18,6 +31,22 @@ And then execute:
 
 ```bash
 $ bundle
+$ rake db:migrate
+```
+
+Add this line to host app's `application_controller.rb`:
+ 
+```ruby
+   helper C80Push::Engine.helpers
+```
+
+Add these to host app's `active_admin.js.coffee`:
+
+```js
+#= require bootstrap
+#= require bootstrap-select
+#= require c80_yax
+#= require c80_push
 ```
 
 ## Цитата из ТЗ

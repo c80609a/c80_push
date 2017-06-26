@@ -13,6 +13,7 @@ ActiveAdmin.register C80Push::Dealer, as: 'Dealer' do
                     :gps,
                     :tel,
                     :site,
+                    :email,
                     :_destroy,
                     :region_ids => []
                 ]
@@ -57,8 +58,9 @@ ActiveAdmin.register C80Push::Dealer, as: 'Dealer' do
         office.input :title
         office.input :addr
         office.input :gps
-        office.input :tel
-        office.input :site
+        office.input :tel, hint: I18n.t('active_admin.hints.tel')
+        office.input :site, hint: I18n.t('active_admin.hints.site')
+        office.input :email, hint: I18n.t('active_admin.hints.email')
         office.input :regions,
                 :as => :select,
                 :input_html => {

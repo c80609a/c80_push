@@ -5,6 +5,7 @@ class CreateC80PushOffices < ActiveRecord::Migration[5.0]
       t.string :addr, null: false
       t.string :gps, null: false
       t.string :tel, null: false
+      t.string :email
       t.string :site
       t.references :dealer, index: true
 
