@@ -15,8 +15,12 @@ ActiveAdmin.register C80Push::Region, as: 'Region' do
   index do
     id_column
     column :title
-    column :offices
-    column :dealers
+    column :offices do |region|
+      ul_offices(region)
+    end
+    column :dealers do |region|
+      ul_dealers(region)
+    end
 
     actions
   end

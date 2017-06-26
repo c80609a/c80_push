@@ -24,8 +24,12 @@ ActiveAdmin.register C80Push::Dealer, as: 'Dealer' do
   index do
     id_column
     column :title
-    column :regions # TODO-1:: dealer helper 'regions'
-    column :offices # TODO-1:: dealer helper 'offices'
+    column :regions do |dealer|
+      first_region(dealer)
+    end
+    column :offices do |dealer|
+      ul_offices(dealer)
+    end
 
     actions
   end
