@@ -1,0 +1,15 @@
+ru:
+  c80_push:
+    active_admin:
+        menu:
+          region: 'Регионы'
+  activerecord:
+    models:
+      region:
+        one: 'регион'
+        other: 'Регионы'
+    attributes:
+      c80_push/region:
+        title: 'Название'
+        dealers: 'Дилеры'
+        offices: 'Офисы'
