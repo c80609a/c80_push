@@ -1,0 +1,6 @@
+.idea/
+.bundle/
+log/*.log
+pkg/
+*.swp
+*.gem
