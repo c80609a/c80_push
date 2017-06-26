@@ -1,6 +1,9 @@
 ru:
   c80_push:
     active_admin:
+      hints:
+        site: 'Если сайтов несколько, перечислите их через запятую'
+        email: 'Если адресов несколько, перечислите их через запятую'
       menu:
         dealer: 'Список дилеров'
   activerecord:
@@ -11,6 +14,9 @@ ru:
     attributes:
       c80_push/dealer:
         id: 'id'
+        ord: 'Порядковый №'
         title: 'Название'
+        site: 'Сайт(ы)'
+        email: 'Email адрес(а)'
         regions: 'Регион'
         offices: 'Офисы'

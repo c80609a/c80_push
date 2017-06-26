@@ -15,7 +15,7 @@ module C80Push
       res = '-'
       unless subj.offices.count.zero?
         res = ''
-        subj.offices.each do |office|
+        subj.offices.def_order.each do |office|
           e = "<li>#{office.title}</li>"
           res += e
         end
@@ -29,7 +29,7 @@ module C80Push
       res = '-'
       unless subj.dealers.count.zero?
         res = ''
-        subj.dealers.each do |dealer|
+        subj.dealers.def_order.each do |dealer|
           e = "<li>#{dealer.title}</li>"
           res += e
         end
@@ -38,5 +38,23 @@ module C80Push
       res
     end
 
+    def dealer_col_title(dealer)
+      res = "#{dealer.title}"
+      res += "<br><sub>email: #{format_val(dealer.email)}</sub>"
+      res += "<br><sub>site: #{format_val(dealer.site)}</sub>"
+      res.html_safe
+    end
+
+    private
+
+    def format_val(val)
+      res = '-'
+      unless val.blank?
+        res = val
+      end
+      "<span class='c80_md_link_color'>#{res}</span>".html_safe
+    end
+
   end
+
 end

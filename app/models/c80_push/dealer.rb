@@ -12,5 +12,10 @@ module C80Push
               :uniqueness => true,
               :presence => true
 
+    validates :ord,
+              :presence => true
+
+    scope :def_order, -> { order(:ord => :asc) }
+
   end
 end

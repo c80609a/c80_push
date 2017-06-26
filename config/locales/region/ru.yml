@@ -10,6 +10,7 @@ ru:
         other: 'Регионы'
     attributes:
       c80_push/region:
+        ord: 'Порядковый №'
         title: 'Название'
         dealers: 'Дилеры'
         offices: 'Офисы'

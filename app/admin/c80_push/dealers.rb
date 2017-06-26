@@ -5,9 +5,13 @@ ActiveAdmin.register C80Push::Dealer, as: 'Dealer' do
        :priority => 1
 
   permit_params :title,
+                :ord,
+                :site,
+                :email,
                 :region_ids => [],
                 :offices_attributes => [
                     :id,
+                    :ord,
                     :title,
                     :addr,
                     :gps,
@@ -19,12 +23,17 @@ ActiveAdmin.register C80Push::Dealer, as: 'Dealer' do
                 ]
 
   config.batch_actions = false
-  config.sort_order = 'id_asc'
+  config.sort_order = 'ord_asc'
   before_filter :skip_sidebar!, :only => :index
 
   index do
     id_column
-    column :title
+    column :ord
+    column :title do |dealer|
+      dealer_col_title(dealer)
+    end
+    # column :site
+    # column :email
     column :regions do |dealer|
       first_region(dealer)
     end
@@ -39,6 +48,9 @@ ActiveAdmin.register C80Push::Dealer, as: 'Dealer' do
 
     f.inputs 'Свойства' do
       f.input :title
+      f.input :ord
+      f.input :site, hint: I18n.t('c80_push.active_admin.hints.site')
+      f.input :email, hint: I18n.t('c80_push.active_admin.hints.email')
       f.input :regions,
               :as => :select,
               :input_html => {
@@ -56,11 +68,12 @@ ActiveAdmin.register C80Push::Dealer, as: 'Dealer' do
                  :allow_destroy => true,
                  :heading => I18n.t('activerecord.models.office.other') do |office|
         office.input :title
+        office.input :ord
         office.input :addr
         office.input :gps
-        office.input :tel, hint: I18n.t('active_admin.hints.tel')
-        office.input :site, hint: I18n.t('active_admin.hints.site')
-        office.input :email, hint: I18n.t('active_admin.hints.email')
+        office.input :tel, hint: I18n.t('c80_push.active_admin.hints.tel')
+        office.input :site, hint: I18n.t('c80_push.active_admin.hints.site')
+        office.input :email, hint: I18n.t('c80_push.active_admin.hints.email')
         office.input :regions,
                 :as => :select,
                 :input_html => {

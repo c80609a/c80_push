@@ -5,16 +5,18 @@ ActiveAdmin.register C80Push::Region, as: 'Region' do
        :priority => 2
 
   permit_params :title,
+                :ord,
                 :office_ids => [],
                 :dealer_ids => []
 
   config.batch_actions = false
-  config.sort_order = 'id_asc'
+  config.sort_order = 'ord_asc'
   before_filter :skip_sidebar!, :only => :index
 
   index do
     id_column
     column :title
+    column :ord
     column :offices do |region|
       ul_offices(region)
     end
@@ -29,6 +31,7 @@ ActiveAdmin.register C80Push::Region, as: 'Region' do
 
     f.inputs 'Свойства' do
       f.input :title
+      f.input :ord
       f.input :offices, :as => :check_boxes
       f.input :dealers, :as => :check_boxes
     end
