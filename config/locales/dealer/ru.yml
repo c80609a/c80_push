@@ -1,0 +1,15 @@
+ru:
+  c80_push:
+    active_admin:
+      menu:
+        dealer: 'Список дилеров'
+  activerecord:
+    models:
+      dealer:
+        one: 'дилера'
+        other: 'Дилеры'
+    attributes:
+      c80_push/dealer:
+        id: 'id'
+        title: 'Название'
+        regions: 'Регион'

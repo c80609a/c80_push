@@ -1,5 +1,7 @@
-require "c80_push/engine"
+require 'c80_push/engine'
 
 module C80Push
-  # Your code goes here...
+  def self.table_name_prefix
+    'c80_push_'
+  end
 end

@@ -1,0 +1,14 @@
+ru:
+  activerecord:
+    models:
+      office:
+        one: 'офис'
+        other: 'офисы'
+    attributes:
+      c80_push/office:
+        title: 'Название'
+        addr: 'Адрес'
+        gps: 'GPS-координаты'
+        tel: 'Телефон(ы)'
+        site: 'Сайт(ы)'
+        regions: 'Регион'

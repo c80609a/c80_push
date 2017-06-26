@@ -1,0 +1,5 @@
+ru:
+  c80_push:
+    active_admin:
+      menu:
+        core_item: 'Дилеры'
