@@ -1,0 +1,50 @@
+.ul_dealers_list {
+  margin: 0;
+  padding: 0;
+
+  .li_region {
+
+    h2.region_title {
+      display: none;
+      margin:0;
+      padding:0;
+      /*font-size: 20px;*/
+    }
+
+    .ul_region_dealers {
+
+      .li_dealer {
+
+        h3.dealer_title {
+          margin:0;
+          padding:0;
+          font-size: 20px;
+          color: #E0001A;
+          font-weight: bold;
+        }
+
+        .ul_dealer_offices {
+
+          .li_office {
+
+            span.office_title {
+
+            }
+
+            .ul_office_props {
+              li.office_addr {
+
+              }
+              li.office_tel {
+
+              }
+            }
+
+          }
+        }
+
+      }
+    }
+  }
+
+}
