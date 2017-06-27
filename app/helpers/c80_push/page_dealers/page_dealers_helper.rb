@@ -55,7 +55,7 @@ module C80Push
         res = ''
         # noinspection RubyResolve
         dealer.offices.each_with_index do |office|
-          o = "<span class='office_title'>#{office.title}</span>"
+          o = "<h4 class='office_title'>#{office.title}</h4>"
           o += ul_office_props(office)
           res += "<li class='li_office' id='office_#{office.id}'>#{o}</li>"
         end

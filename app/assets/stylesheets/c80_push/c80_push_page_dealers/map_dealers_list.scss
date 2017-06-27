@@ -1,6 +1,7 @@
 .ul_dealers_list {
   margin: 0;
   padding: 0;
+  list-style: none;
 
   .li_region {
 
@@ -12,26 +13,47 @@
     }
 
     .ul_region_dealers {
+      padding: 0; //5px 5px 10px 15px;
+      list-style: none;
+      border: 1px #B2B2B2 solid;
 
       .li_dealer {
+        padding: 15px;
+        border-bottom: 1px #B2B2B2 solid;
 
         h3.dealer_title {
-          margin:0;
-          padding:0;
+          margin: 0 0 5px 0;
+          padding: 0;
           font-size: 20px;
           color: #E0001A;
           font-weight: bold;
         }
 
         .ul_dealer_offices {
+          margin: 0;
+          padding: 0;
+          list-style: none;
 
           .li_office {
+            border-bottom: 1px #dcdcdc solid;
+            padding: 0 0 5px 0;
+            margin-bottom: 10px;
 
-            span.office_title {
-
+            h4.office_title {
+              margin: 0 0 5px 0;
+              padding: 0;
+              font-weight: bold;
+              font-size: 13px;
+              color: #b2b2b2;
             }
 
             .ul_office_props {
+              margin: 0;
+              padding: 0;
+              list-style: none;
+              color: #b2b2b2;
+              font-size: 17px;
+
               li.office_addr {
 
               }
@@ -40,6 +62,14 @@
               }
             }
 
+          }
+
+          li.dealer_email {
+            color: #E0001A;
+          }
+
+          li.dealer_site {
+            color: #E0001A;
           }
         }
 
