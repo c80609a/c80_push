@@ -15,7 +15,7 @@ module C80Push
     validates :ord,
               :presence => true
 
-    scope :def_order, -> { order(:ord => :asc) }
+    default_scope -> { order(:ord => :asc) }
 
   end
 end

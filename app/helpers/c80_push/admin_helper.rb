@@ -15,7 +15,7 @@ module C80Push
       res = '-'
       unless subj.offices.count.zero?
         res = ''
-        subj.offices.def_order.each do |office|
+        subj.offices.each do |office|
           e = "<li>#{office.title}</li>"
           res += e
         end
@@ -29,7 +29,7 @@ module C80Push
       res = '-'
       unless subj.dealers.count.zero?
         res = ''
-        subj.dealers.def_order.each do |dealer|
+        subj.dealers.each do |dealer|
           e = "<li>#{dealer.title}</li>"
           res += e
         end

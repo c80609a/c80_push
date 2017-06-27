@@ -3,7 +3,7 @@ module C80Push
     has_and_belongs_to_many :dealers
     has_and_belongs_to_many :offices
 
-    scope :def_order, -> { order(:ord => :asc) }
+    default_scope -> { order(:ord => :asc) }
 
     validates :title,
               :uniqueness => true,
