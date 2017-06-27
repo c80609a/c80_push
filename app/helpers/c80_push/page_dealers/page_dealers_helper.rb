@@ -5,6 +5,7 @@ module C80Push
       # Выдать список Дилеров (включая Офисы),
       # разложенный по Регионам.
       # Список выводится слева от карты.
+      # (**) Не выводим регионы, у которых нет дилеров.
       #
       # * Регион
       #     * Дилер
@@ -23,7 +24,9 @@ module C80Push
 
         Region.includes(dealers: :offices).each do |region|
           r = "<h2 class='region_title'>#{region.title}</h2>"
-          r += ul_region_dealers(region)
+          ds = ul_region_dealers(region)
+          next if ds.blank? # (**)
+          r += ds
           res += "<li class='li_region' id='region_#{region.id}'>#{r}</li>"
         end
 
@@ -34,6 +37,7 @@ module C80Push
       private
 
       # используется только в render_dealers_list
+      # (*) не выводим список дилеров, если он пуст
       def ul_region_dealers(region)
         res = ''
         # noinspection RubyResolve
@@ -42,6 +46,7 @@ module C80Push
           d += ul_dealer_offices(dealer)
           res += "<li class='li_dealer' id='dealer_#{dealer.id}'>#{d}</li>"
         end
+        return res if res.blank? # (*)
         "<ul class='ul_region_dealers'>#{res}</ul>"#.html_safe
       end
 
@@ -49,7 +54,7 @@ module C80Push
       def ul_dealer_offices(dealer)
         res = ''
         # noinspection RubyResolve
-        dealer.offices.each do |office|
+        dealer.offices.each_with_index do |office|
           o = "<span class='office_title'>#{office.title}</span>"
           o += ul_office_props(office)
           res += "<li class='li_office' id='office_#{office.id}'>#{o}</li>"
