@@ -3,16 +3,32 @@ div.c80_push_page_dealers {
 
   > div {
     float: left;
+    width: 100%;
   }
 
   div.select_region_row {
     height: 53px;
-    width: 100%;
+    margin-bottom: 25px;
   }
 
-  div#dealers_map_container {
-    width: 100%;
-    height: 600px;
+  div.bottom_row {
+    @include clearfix;
+
+    > div {
+      float: left;
+    }
+
+    div.dealers_list {
+      width: 320px;
+      height: 600px;
+      overflow-y: auto;
+    }
+
+    div#dealers_map_container {
+      width: calc(100% - 320px);
+      height: 600px;
+    }
+
   }
 
 }

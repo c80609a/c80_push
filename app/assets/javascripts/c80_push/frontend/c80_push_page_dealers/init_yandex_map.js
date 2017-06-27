@@ -5,7 +5,8 @@ $(document).ready(function() {
     ymaps.ready(function() {
         dealers_map = new ymaps.Map('dealers_map_container', {
             center: [55, 37],
-            zoom: 10
+            zoom: 10,
+            controls: ['zoomControl']
         });
     });
 
