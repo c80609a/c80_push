@@ -59,7 +59,7 @@ module C80Push
         dealer.offices.each_with_index do |office|
           o = "<h4 class='office_title'>#{office.title}</h4>"
           o += ul_office_props(office)
-          res += "<li class='li_office' id='office_#{office.id}'>#{o}</li>"
+          res += "<li class='li_office' id='office_#{office.id}' data-id='#{office.id}'>#{o}</li>"
         end
         res += "<li class='dealer_email'>#{dealer.email}</li>"
         res += "<li class='dealer_site'>#{dealer.site}</li>"

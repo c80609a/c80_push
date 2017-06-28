@@ -62,7 +62,8 @@ module C80Push
             props = {
                 balloonContentHeader: t = "#{office.title} (#{dealer.title})",
                 balloonContentBody:   b = "#{office.addr}<br>#{office.tel}<br>GPS: #{office.gps}",
-                hintContent:          "#{t}<br>#{b}"
+                hintContent:          "#{t}<br>#{b}",
+                id:                   office.id
             }
 
             # фиксируем в хэше региона
