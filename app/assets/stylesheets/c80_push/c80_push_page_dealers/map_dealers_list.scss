@@ -1,0 +1,119 @@
+.ul_dealers_list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .li_region {
+
+    h2.region_title {
+      display: none;
+      margin:0;
+      padding:0;
+      /*font-size: 20px;*/
+    }
+
+    .ul_region_dealers {
+      padding: 0; //5px 5px 10px 15px;
+      list-style: none;
+      border: 1px #B2B2B2 solid;
+
+      .li_dealer {
+        padding: 15px;
+        border-bottom: 1px #B2B2B2 solid;
+
+        h3.dealer_title {
+          margin: 0 0 5px 0;
+          padding: 0;
+          font-size: 20px;
+          color: #E0001A;
+          font-weight: bold;
+        }
+
+        .ul_dealer_offices {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+
+          .li_office {
+            border-bottom: 1px #dcdcdc solid;
+            padding: 7px 0 7px 0;
+            color: #b2b2b2;
+            position: relative;
+
+            h4.office_title {
+              margin: 0 0 5px 0;
+              padding: 0;
+              font-weight: bold;
+              font-size: 13px;
+            }
+
+            .ul_office_props {
+              margin: 0;
+              padding: 0;
+              list-style: none;
+              font-size: 17px;
+
+              li.office_addr {
+
+              }
+              li.office_tel {
+
+              }
+            }
+
+            &:after {
+              position: absolute;
+              content: ' ';
+              display: none;
+              height: calc(100% + 2px);
+              width: calc(100% + 30px);
+              top: -1px;
+              left: -15px;
+              z-index: -1;
+            }
+
+            &:hover {
+              border-bottom: 1px transparent solid;
+              &:after {
+                display: block;
+                background-color: #e8e8e8;
+              }
+            }
+
+            &.active {
+              border-bottom: 1px transparent solid;
+              color: #e4e0e0;
+              position: relative;
+
+              &:after {
+                display: block;
+                background-color: #626262;
+                top: 0;
+              }
+
+              &:hover {
+                &:after {
+                  display: block;
+                  background-color: #626262;
+                  top: 0;
+                }
+              }
+            }
+
+          }
+
+          li.dealer_email {
+            margin-top: 10px;
+            color: #E0001A;
+          }
+
+          li.dealer_site {
+            color: #E0001A;
+          }
+        }
+
+      }
+    }
+  }
+
+}

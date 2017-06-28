@@ -1,0 +1,35 @@
+div.c80_push_page_dealers {
+  @include clearfix;
+
+  > div {
+    float: left;
+    width: 100%;
+  }
+
+  div.select_region_row {
+    height: 53px;
+    margin-bottom: 25px;
+  }
+
+  div.bottom_row {
+    @include clearfix;
+
+    > div {
+      float: left;
+    }
+
+    div.dealers_list {
+      margin: 0 15px 0 0;
+      width: 305px;
+      height: 600px;
+      overflow-y: auto;
+    }
+
+    div#dealers_map_container {
+      width: calc(100% - 320px);
+      height: 600px;
+    }
+
+  }
+
+}
