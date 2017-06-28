@@ -18,6 +18,10 @@
 
 ## Usage
 
+Available helpers:
+
+* `c80_push_render_page_dealers`: отрисует js-компонент с yandex картой
+и фильтруемым списком дилеров слева.
 
 ## Installation
 
@@ -40,13 +44,25 @@ Add this line to host app's `application_controller.rb`:
    helper C80Push::Engine.helpers
 ```
 
-Add these to host app's `active_admin.js.coffee`:
+Add these lines to host app's `active_admin.js.coffee`:
 
 ```js
 #= require bootstrap
 #= require bootstrap-select
 #= require c80_yax
+#= require c80_push_backend
+```
+
+Add these lines to host app's 'application.js.coffee':
+
+```js
 #= require c80_push
+```
+
+Add these lines to host app's 'application.scss':
+
+```css
+@include "c80_push";
 ```
 
 ## Цитата из ТЗ
