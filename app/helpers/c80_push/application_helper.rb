@@ -10,11 +10,16 @@ module C80Push
       # список регионов, включая дилеры и офисы
       region_dealer_office_list = Region.includes(dealers: :offices)
 
+      # хэш для построения точек на Yandex карте
       ymap_hash = prepare_ymap_hash(region_dealer_office_list)
+
+      # список регионов для select-а "Выберите регион"
+      r = prepare_regions_hash(region_dealer_office_list)
 
       render partial: 'c80_push/shared/page_dealers',
              locals: {
                  rdo_list: region_dealer_office_list,
+                 regions_list: r,
                  ymap_hash: ymap_hash
              }
     end
@@ -77,6 +82,24 @@ module C80Push
       # для удобства в js: зафиксируем кол-во всех офисов
       res[:all][:count] = res[:all][:coords].size
 
+      res
+    end
+
+    # соберёт хэш только тех регионов, в которых есть офисы
+    # например: {4=>{:id=>4, :title=>"Санкт-Петербург"}}
+    def prepare_regions_hash(rdo)
+      res = {}
+      rdo.each do |region|
+        region.dealers.each do |dealer|
+          dealer.offices.each do |office|
+            if res[region.id].nil?
+              res[region.id] = { id:region.id, title:region.title }
+            else
+              break
+            end
+          end
+        end
+      end
       res
     end
 

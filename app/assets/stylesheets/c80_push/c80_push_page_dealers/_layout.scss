@@ -8,7 +8,12 @@ div.c80_push_page_dealers {
 
   div.select_region_row {
     height: 53px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
+    padding: 9px;
+
+    div.select_wrapper {
+      float: right;
+    }
   }
 
   div.bottom_row {
