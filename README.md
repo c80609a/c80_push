@@ -2,13 +2,14 @@
 
 Добавляет функционал дилеров и офисов продаж. 
 Это *ActiveAdmin* plugin.
-Использует *Bootstrap* и *Bootstrap Select*. 
+Использует *Bootstrap* и *Bootstrap Select*: как во *frontend*,
+так и в *backend*.
 
 Содержит модели: 
 
-* Дилер
-* Офис
-* Регион
+* *Регион* (habtm Dealers)
+* *Дилер* (has_many Offices)
+* *Офис* (belongs_to Dealer)
 
 Добавляет пункт меню:
 
@@ -21,7 +22,7 @@
 Available helpers:
 
 * `c80_push_render_page_dealers`: отрисует js-компонент с yandex картой
-и фильтруемым списком дилеров слева.
+и фильтруемым, кликабельным списком офисов слева.
 
 ## Installation
 
@@ -70,7 +71,50 @@ Add these lines to host app's 'application.scss':
 @include "c80_push";
 ```
 
-## Процесс разработки JS функционала 
+## Customization
+
+Т.к. исходя из ТЗ было не ясно, есть ли у *Офисов* такие поля, как
+сайт, email и регион, они были добавлены (на всякий случай), и поля
+сделаны необязательными. И их можно "отключить", добавив в host app
+такой файл `app/assets/stylesheets/custom/backend/c80_push/dealers.scss`:
+
+```scss
+/* у Офисов скроем неиспользуемые поля */
+body.admin_dealers {
+  &.edit {
+
+    li[id*='dealer_offices_attributes_'] {
+      &[id*='site_input'] {
+        display: none;
+      }
+      &[id*='email_input'] {
+        display: none;
+      }
+      &[id*='regions_input'] {
+        display: none;
+      }
+    }
+  }
+}
+```
+
+А сам файл подключить в `active_admin.scss`:
+
+```scss
+@import "custom/backend/**/*";
+```
+
+# TODO
+
+* [ ] Добавить валидацию поля `gps` модели *Office*.
+
+* [ ] Попробовать подключить к `backend` *client side validation*.
+
+* [ ] Вынести `*.rb` файлы, подлежащие кастомизации в `templates` (предварительно
+определив, что может еще быть кастомизировано), наваять инсталлятор,
+отметить это в `README`.
+
+# Процесс разработки JS функционала 
 
 Теперь пора заняться js.
 
