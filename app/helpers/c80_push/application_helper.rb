@@ -26,23 +26,56 @@ module C80Push
     # в хеше вида:
     #
     # {
-    #   all: []       - здесь собираем все офисы всех регионов
-    #   region_id: [] - данные офисов разложены по регионам
+    #   all: {          - здесь собираем все офисы всех регионов (для лаконичности js)
+    #       coords: [],
+    #       props: []
+    #   }
+    #   <region_id>: [  - данные офисов разложены по регионам
+    #       coords: [],
+    #       props: []
+    #   ]
     # }
     #
+    # noinspection RubyResolve
     def prepare_ymap_hash(rdo)
-      res = {all:[]}
+      res = {
+          all: {
+              coords: [],
+              props: []
+          }
+      }
 
       rdo.each do |region|
         region.dealers.each do |dealer|
           dealer.offices.each do |office|
-            res[region.id] = [] if res[region.id].nil?
-            v = office.gps_arr
-            res[region.id] << v
-            res[:all] << v
+            res[region.id] = { coords:[], props:[] } if res[region.id].nil?
+
+            # координаты точки (это массив двух точек)
+            gps = office.gps_arr
+
+            # соберём свойства офиса для балуна
+            props = {
+                balloonContentHeader: t = "#{office.title} (#{dealer.title})",
+                balloonContentBody:   b = "#{office.addr}<br>#{office.tel}<br>GPS: #{office.gps}",
+                hintContent:          "#{t}<br>#{b}"
+            }
+
+            # фиксируем в хэше региона
+            res[region.id][:coords] << gps
+            res[region.id][:props] << props
+
+            # фиксируем в all-хэше
+            res[:all][:coords] << gps
+            res[:all][:props] << props
+
           end
+        # для удобства в js: зафиксируем кол-во офисов региона
+        res[region.id][:count] = res[region.id][:coords].size
         end
       end
+
+      # для удобства в js: зафиксируем кол-во всех офисов
+      res[:all][:count] = res[:all][:coords].size
 
       res
     end

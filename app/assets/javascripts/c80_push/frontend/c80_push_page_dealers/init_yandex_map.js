@@ -31,8 +31,13 @@ $(document).ready(function() {
         */
 
         var c = new ymaps.GeoObjectCollection();
-        for (var i = 0; i < offices['all'].length; i++) {
-            c.add(new ymaps.Placemark(offices['all'][i]));
+        var arr = offices['all'];
+        var n = arr['count'];
+        var icoords, iprops; // loop vars
+        for (var i = 0; i < n; i++) {
+            icoords = arr['coords'][i];
+            iprops = arr['props'][i];
+            c.add(new ymaps.Placemark(icoords, iprops));
         }
         dealers_map.geoObjects.add(c);
         dealers_map.setBounds(c.getBounds());
