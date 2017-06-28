@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  border-top: 1px #B2B2B2 solid;
+  background-color: #ffffff;
 
   .li_region {
 
@@ -16,6 +18,8 @@
       padding: 0; //5px 5px 10px 15px;
       list-style: none;
       border: 1px #B2B2B2 solid;
+      border-bottom: none;
+      border-top: none;
 
       .li_dealer {
         padding: 15px;
@@ -74,6 +78,7 @@
 
             &:hover {
               border-bottom: 1px transparent solid;
+              z-index: 1;
               &:after {
                 display: block;
                 background-color: #e8e8e8;
@@ -84,6 +89,7 @@
               border-bottom: 1px transparent solid;
               color: #e4e0e0;
               position: relative;
+              z-index: 1;
 
               &:after {
                 display: block;

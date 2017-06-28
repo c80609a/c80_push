@@ -5,9 +5,22 @@ div.c80_push_page_dealers {
 
   div.select_region_row {
     background-color: #E0001A;
+    div.select_wrapper {
+
+    }
   }
 
-  div#dealers_map_container {
+  div.bottom_row {
+
+    > div {
+    }
+
+    div.dealers_list {
+      background-color: #f5f5f5;
+    }
+
+    div#dealers_map_container {
+    }
 
   }
 

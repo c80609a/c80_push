@@ -1,12 +1,14 @@
 module C80Push
   module PageDealers
-    module PageDealersHelper
+    module DealersLeftListHelper
 
-      # Выдать список Дилеров (включая Офисы),
-      # разложенный по Регионам.
+      # Выдать html unordered nested list Дилеров (включая Офисы),
+      # разложенный по Регионам, построенный
+      # на основе данных +rdo+ - Regions-Dealers-Offices.
       # Список выводится слева от карты.
       # (**) Не выводим регионы, у которых нет дилеров.
       #
+      # Структура списка:
       # * Регион
       #     * Дилер
       #         * Офис 1
@@ -18,11 +20,11 @@ module C80Push
       #         * сайт дилера
       #         * email дилера
       #
-      def render_ul_dealers_list
+      def render_ul_dealers_list(rdo)
 
         res = ''
 
-        Region.includes(dealers: :offices).each do |region|
+        rdo.each do |region|
           r = "<h2 class='region_title'>#{region.title}</h2>"
           ds = ul_region_dealers(region)
           next if ds.blank? # (**)
@@ -57,7 +59,7 @@ module C80Push
         dealer.offices.each_with_index do |office|
           o = "<h4 class='office_title'>#{office.title}</h4>"
           o += ul_office_props(office)
-          res += "<li class='li_office' id='office_#{office.id}'>#{o}</li>"
+          res += "<li class='li_office' id='office_#{office.id}' data-id='#{office.id}'>#{o}</li>"
         end
         res += "<li class='dealer_email'>#{dealer.email}</li>"
         res += "<li class='dealer_site'>#{dealer.site}</li>"

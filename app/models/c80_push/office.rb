@@ -19,5 +19,9 @@ module C80Push
 
     validates :tel,
               :presence => true
+
+    def gps_arr
+      self.gps.split(',').map! { |c| c.to_f }
+    end
   end
 end

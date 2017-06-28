@@ -1,13 +1,15 @@
 <div class="c80_push_page_dealers">
 
   <div class="select_region_row">
-
+    <div class="select_wrapper">
+      <%= render 'c80_push/shared/select_region', regions: regions_list %>
+    </div>
   </div>
 
   <div class="bottom_row">
 
     <div class="dealers_list">
-      <%= render_ul_dealers_list %>
+      <%= render_ul_dealers_list(rdo_list) %>
     </div>
 
     <div id="dealers_map_container">
@@ -17,5 +19,9 @@
   </div>
 
 </div>
+
+<script>
+  var offices = <%= ymap_hash.to_json.html_safe %>;
+</script>
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
