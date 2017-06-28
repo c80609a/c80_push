@@ -1,6 +1,6 @@
 module C80Push
   module PageDealers
-    module PageDealersHelper
+    module DealersLeftListHelper
 
       # Выдать html unordered nested list Дилеров (включая Офисы),
       # разложенный по Регионам, построенный
