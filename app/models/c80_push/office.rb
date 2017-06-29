@@ -15,7 +15,8 @@ module C80Push
               :presence => true
 
     validates :gps,
-              :presence => true
+              :presence => true,
+              :format => { with: /\A\d+\.\d+,\s*\d+\.\d+\z/ }
 
     validates :tel,
               :presence => true

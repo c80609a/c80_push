@@ -49,8 +49,8 @@ ActiveAdmin.register C80Push::Dealer, as: 'Dealer' do
     f.inputs 'Свойства' do
       f.input :title
       f.input :ord
-      f.input :site, hint: I18n.t('c80_push.active_admin.hints.site')
-      f.input :email, hint: I18n.t('c80_push.active_admin.hints.email')
+      f.input :site, hint: I18n.t('c80_push.active_admin.hints.dealer.site')
+      f.input :email, hint: I18n.t('c80_push.active_admin.hints.dealer.email')
       f.input :regions,
               :as => :select,
               :input_html => {
@@ -71,9 +71,9 @@ ActiveAdmin.register C80Push::Dealer, as: 'Dealer' do
         office.input :ord
         office.input :addr
         office.input :gps
-        office.input :tel, hint: I18n.t('c80_push.active_admin.hints.tel')
-        office.input :site, hint: I18n.t('c80_push.active_admin.hints.site')
-        office.input :email, hint: I18n.t('c80_push.active_admin.hints.email')
+        office.input :tel, hint: I18n.t('c80_push.active_admin.hints.office.tel')
+        office.input :site, hint: I18n.t('c80_push.active_admin.hints.office.site')
+        office.input :email, hint: I18n.t('c80_push.active_admin.hints.office.email')
         office.input :regions,
                 :as => :select,
                 :input_html => {
