@@ -9,11 +9,13 @@ function map_set_objects(region_id) {
 
     // соберём коллекцию точек
     var c = new ymaps.GeoObjectCollection();
-    var icoords, iprops; // loop vars
+    var icoords, iprops, isetts; // loop vars
     for (var i = 0; i < n; i++) {
         icoords = arr['coords'][i];
         iprops = arr['props'][i];
-        c.add(new ymaps.Placemark(icoords, iprops));
+        isetts = arr['setts'][i];
+        console.log(isetts);
+        c.add(new ymaps.Placemark(icoords, iprops, isetts));
     }
 
     // сначала уберём все точки

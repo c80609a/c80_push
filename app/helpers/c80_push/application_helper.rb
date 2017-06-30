@@ -32,12 +32,14 @@ module C80Push
     #
     # {
     #   all: {          - здесь собираем все офисы всех регионов (для лаконичности js)
-    #       coords: [],
-    #       props: []
+    #       coords: [], - массив двух координат, например: [12.345, 12.345]
+    #       props: [],  - свойства объекта (офиса): тот текст, который выводится в balloon-e
+    #       setts: []   - свойства метки (цвет)
     #   }
     #   <region_id>: [  - данные офисов разложены по регионам
     #       coords: [],
-    #       props: []
+    #       props: [],
+    #       setts: []
     #   ]
     # }
     #
@@ -46,14 +48,15 @@ module C80Push
       res = {
           all: {
               coords: [],
-              props: []
+              props: [],
+              setts: []
           }
       }
 
       rdo.each do |region|
         region.dealers.each do |dealer|
           dealer.offices.each do |office|
-            res[region.id] = { coords:[], props:[] } if res[region.id].nil?
+            res[region.id] = { coords:[], props:[], setts:[] } if res[region.id].nil?
 
             # координаты точки (это массив двух точек)
             gps = office.gps_arr
@@ -66,13 +69,20 @@ module C80Push
                 id:                   office.id
             }
 
+            # свойства метки - цвет
+            setts = {
+                preset: "islands##{prepare_dealer_preset(dealer)}"
+            }
+
             # фиксируем в хэше региона
             res[region.id][:coords] << gps
             res[region.id][:props] << props
+            res[region.id][:setts] << setts
 
             # фиксируем в all-хэше
             res[:all][:coords] << gps
             res[:all][:props] << props
+            res[:all][:setts] << setts
 
           end
         # для удобства в js: зафиксируем кол-во офисов региона
@@ -100,6 +110,17 @@ module C80Push
             end
           end
         end
+      end
+      res
+    end
+
+    # сформировать название preset-а Дилера
+    # для цветного маркера.
+    # По умолчанию вернёт `blueDotIcon`
+    def prepare_dealer_preset(dealer)
+      res = 'blueDotIcon'
+      unless dealer.presets.count.zero?
+        res = dealer.presets.first.title
       end
       res
     end

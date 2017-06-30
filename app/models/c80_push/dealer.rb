@@ -1,6 +1,7 @@
 module C80Push
   class Dealer < ActiveRecord::Base
     has_and_belongs_to_many :regions
+    has_and_belongs_to_many :presets
     has_many :offices, :dependent => :destroy
     accepts_nested_attributes_for :offices,
                                   :reject_if => lambda { |attributes|

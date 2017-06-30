@@ -42,10 +42,11 @@ module C80Push
       res = "#{dealer.title}"
       res += "<br><sub>email: #{format_val(dealer.email)}</sub>"
       res += "<br><sub>site: #{format_val(dealer.site)}</sub>"
+      res += "<br><sub>цвет: #{format_dealer_preset_val(dealer)}</sub>"
       res.html_safe
     end
 
-    private
+    # private
 
     def format_val(val)
       res = '-'
@@ -53,6 +54,19 @@ module C80Push
         res = val
       end
       "<span class='c80_md_link_color'>#{res}</span>".html_safe
+    end
+
+    def format_dealer_preset_val(dealer)
+      res = '-'
+      if dealer.presets.count > 0
+        p = dealer.presets.first
+        res = format_preset_val(p)
+      end
+      res.html_safe
+    end
+
+    def format_preset_val(preset)
+      "<span class='dealer_preset_span' style='background-color:#{preset.color}'></span>"
     end
 
   end
