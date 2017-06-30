@@ -114,8 +114,10 @@ body.admin_dealers {
 * [X] Реализовать функционал цветных маркеров.
 
     - [ ] Внутри `bootstrap selectpicker` должны рисоваться цветные прямоугольники: 
-    [/formtastic/inputs/select_input.rb](https://github.com/justinfrench/formtastic/blob/master/lib/formtastic/inputs/select_input.rb),
-    [bootstrap selectpicker: option with data-content](https://stackoverflow.com/questions/26069286/bootstrap-with-select-list-that-contains-only-images)
+        - Исходный код класса [/formtastic/inputs/select_input.rb](https://github.com/justinfrench/formtastic/blob/master/lib/formtastic/inputs/select_input.rb),
+        - Stackoverflow просвящает по сабжу [bootstrap selectpicker: option with data-content](https://stackoverflow.com/questions/26069286/bootstrap-with-select-list-that-contains-only-images)
+
+* [ ] ymaps: реализовать кластеризацию ([пример из документации](https://tech.yandex.ru/maps/jsbox/2.1/clusterer_create)).
 
 * [ ] Вынести `*.rb` файлы, подлежащие кастомизации в `templates` (предварительно
 определив, что может еще быть кастомизировано), наваять инсталлятор,
