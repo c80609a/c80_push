@@ -8,6 +8,7 @@ ActiveAdmin.register C80Push::Dealer, as: 'Dealer' do
                 :ord,
                 :site,
                 :email,
+                :preset_ids => [],
                 :region_ids => [],
                 :offices_attributes => [
                     :id,
@@ -63,6 +64,24 @@ ActiveAdmin.register C80Push::Dealer, as: 'Dealer' do
                   :multiple => false
               },
               :include_blank => true
+      f.input :presets,
+              :as => :select,
+              :collection => C80Push::Preset.all.map {|p| [p.title, p.id]},
+              # :collection => C80Push::Preset.all.map { |p|
+              #   "<option value='#{p.id}'>#{p.title}</option>".html_safe
+              # },
+              # :collection => "<option></option>",
+              :input_html => {
+                  :title => '',
+                  :class => 'selectpicker',
+                  :data => {
+                      :size => 10,
+                      :width => '600px'
+                  },
+                  :multiple => false
+              },
+              :include_blank => true,
+              :hint => "<a href='https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/option.presetStorage-docpage/' target='_blank'>Справка по цветам</a>".html_safe
 
       f.has_many :offices,
                  :allow_destroy => true,

@@ -20,6 +20,7 @@ ru:
         site: 'Сайт(ы)'
         email: 'Email адрес(а)'
         regions: 'Регион'
+        presets: 'Цвет маркера на карте'
         offices: 'Офисы'
     errors:
       models:
